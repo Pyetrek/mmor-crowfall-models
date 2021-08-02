@@ -1,0 +1,14 @@
+item {
+    id: 1
+    name: 'iron'
+}
+
+item {
+    id: 2
+    name: 'copper'
+}
+
+item {
+    id: 2
+    name: 'aurelium'
+}

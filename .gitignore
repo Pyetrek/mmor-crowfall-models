@@ -1,4 +1,6 @@
 .venv
-**/models/
-**/exported-models/
+**/models/*/ckpt*
+**/models/*/checkpoint
+**/models/**/events.out.tfevents.*
+**/exported-models/*/
 **/pre-trained-models/

@@ -1,0 +1,4 @@
+.venv
+**/models/
+**/exported-models/
+**/pre-trained-models/

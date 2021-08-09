@@ -32,9 +32,9 @@ IMAGE_DIR = '/home/mark/src/mmor-crowfall-models/workspace/crowfall/images/test'
 IMAGE_PATHS = [f'{IMAGE_DIR}/{i}' for i in os.listdir(IMAGE_DIR) if '.png' in i]
 # IMAGE_PATHS = ['/home/mark/src/mmor-crowfall-models/workspace/crowfall/images/test/donation_8.png']
 
-PATH_TO_MODEL_DIR = '/home/mark/src/mmor-crowfall-models/workspace/crowfall/exported-models/iron_copper_aurelium_v1'
+PATH_TO_MODEL_DIR = '/home/mark/src/mmor-crowfall-models/workspace/crowfall/exported-models/crowfall_all_v1'
 
-PATH_TO_LABELS = '/home/mark/src/mmor-crowfall-models/workspace/crowfall/annotations/label_map.pbtxt'
+PATH_TO_LABELS = '/home/mark/src/mmor-crowfall-models/workspace/crowfall/annotations/label_map_all.pbtxt'
 
 # %%
 # Load the model

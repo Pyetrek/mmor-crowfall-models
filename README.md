@@ -58,9 +58,10 @@ python object_detection/builders/model_builder_tf2_test.py
 cd scripts/preprocessing/
 export IMAGES_PATH=/home/mark/src/mmor-crowfall-models/workspace/crowfall/images
 export ANNOTATIONS_PATH=/home/mark/src/mmor-crowfall-models/workspace/crowfall/annotations
-python generate_tfrecord.py -x ${IMAGES_PATH}/training -l ${ANNOTATIONS_PATH}/label_map.pbtxt -o ${ANNOTATIONS_PATH}/train.record
-python generate_tfrecord.py -x ${IMAGES_PATH}/test -l ${ANNOTATIONS_PATH}/label_map.pbtxt -o ${ANNOTATIONS_PATH}/test.record
+python generate_tfrecord.py -x ${IMAGES_PATH}/train -l ${ANNOTATIONS_PATH}/label_map_all.pbtxt -o ${ANNOTATIONS_PATH}/train.record
+python generate_tfrecord.py -x ${IMAGES_PATH}/test -l ${ANNOTATIONS_PATH}/label_map_all.pbtxt -o ${ANNOTATIONS_PATH}/test.record
 ```
+Note: Double check that these files generate because training will do nothing (sit there and spin) if the training.record file is empty.
 
 Setup training pipeline
 ```
@@ -79,7 +80,7 @@ cp models/research/object_detection/model_main_tf2.py workspace/crowfall
 cd workspace/crowfall
 export PATH=/usr/local/cuda-11.2/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-python model_main_tf2.py --model_dir=models/crowfall_ssd_resnet50_v1_fpn --pipeline_config_path=models/crowfall_ssd_resnet50_v1_fpn/pipeline.config
+python model_main_tf2.py --model_dir=models/crowfall_all_ssd_resnet50_v1_fpn --pipeline_config_path=models/crowfall_all_ssd_resnet50_v1_fpn/pipeline.config
 ```
 
 Export model
@@ -87,7 +88,7 @@ Export model
 cp models/research/object_detection/exporter_main_v2.py workspace/crowfall/
 cd workspace/crowfall/
 mkdir -p ./exported-models
-python exporter_main_v2.py --input_type image_tensor --pipeline_config_path ./models/crowfall_ssd_resnet50_v1_fpn/pipeline.config --trained_checkpoint_dir ./models/crowfall_ssd_resnet50_v1_fpn/ --output_directory ./exported-models/iron_copper_aurelium_v1
+python exporter_main_v2.py --input_type image_tensor --pipeline_config_path ./models/crowfall_all_ssd_resnet50_v1_fpn/pipeline.config --trained_checkpoint_dir ./models/crowfall_all_ssd_resnet50_v1_fpn/ --output_directory ./exported-models/crowfall_all_v1
 ```
 
 Run Inference

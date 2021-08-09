@@ -1,0 +1,199 @@
+item {
+    id: 1
+    name: 'iron ore'
+}
+
+item {
+    id: 2
+    name: 'copper ore'
+}
+
+item {
+    id: 3
+    name: 'aurelium ore'
+}
+
+item {
+    id: 4
+    name: 'tin ore'
+}
+
+item {
+    id: 5
+    name: 'silver ore'
+}
+
+item {
+    id: 6
+    name: 'diamond gem'
+}
+
+item {
+    id: 7
+    name: 'sapphire gem'
+}
+
+item {
+    id: 8
+    name: 'emerald gem'
+}
+
+item {
+    id: 9
+    name: 'ruby gem'
+}
+
+item {
+    id: 10
+    name: 'topaz gem'
+}
+
+item {
+    id: 11
+    name: 'oak log'
+}
+
+item {
+    id: 12
+    name: 'spruce log'
+}
+
+item {
+    id: 13
+    name: 'birch log'
+}
+
+item {
+    id: 14
+    name: 'ash log'
+}
+
+item {
+    id: 15
+    name: 'yew log'
+}
+
+item {
+    id: 16
+    name: 'oak heartwood'
+}
+
+item {
+    id: 17
+    name: 'spruce heartwood'
+}
+
+item {
+    id: 18
+    name: 'birch heartwood'
+}
+
+item {
+    id: 19
+    name: 'ash heartwood'
+}
+
+item {
+    id: 20
+    name: 'yew heartwood'
+}
+
+item {
+    id: 21
+    name: 'granite stone'
+}
+
+item {
+    id: 22
+    name: 'limestone stone'
+}
+
+item {
+    id: 23
+    name: 'travertine stone'
+}
+
+item {
+    id: 24
+    name: 'slate stone'
+}
+
+item {
+    id: 25
+    name: 'marble stone'
+}
+
+item {
+    id: 26
+    name: 'cinnabar mineral'
+}
+
+item {
+    id: 27
+    name: 'dolomite mineral'
+}
+
+item {
+    id: 28
+    name: 'halite mineral'
+}
+
+item {
+    id: 29
+    name: 'nitre mineral'
+}
+
+item {
+    id: 30
+    name: 'sulphur mineral'
+}
+
+item {
+    id: 31
+    name: 'flexible hide'
+}
+
+item {
+    id: 32
+    name: 'strong hide'
+}
+
+item {
+    id: 33
+    name: 'tough hide'
+}
+
+item {
+    id: 34
+    name: 'soft hide'
+}
+
+item {
+    id: 35
+    name: 'durable hide'
+}
+
+item {
+    id: 36
+    name: 'blood'
+}
+
+item {
+    id: 37
+    name: 'bone'
+}
+
+item {
+    id: 38
+    name: 'ethereal dust'
+}
+
+item {
+    id: 39
+    name: 'chaos ember'
+}
+
+item {
+    id: 40
+    name: 'gold'
+}

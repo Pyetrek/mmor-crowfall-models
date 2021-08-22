@@ -1,0 +1,26 @@
+<annotation>
+	<folder>images</folder>
+	<filename>gold_22.png</filename>
+	<path>M:\Projects\mmor-crowfall-models\images\gold_22.png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>229</width>
+		<height>220</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>gold</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>16</xmin>
+			<ymin>56</ymin>
+			<xmax>67</xmax>
+			<ymax>107</ymax>
+		</bndbox>
+	</object>
+</annotation>

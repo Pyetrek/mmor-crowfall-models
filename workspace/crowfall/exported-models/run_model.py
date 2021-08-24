@@ -30,6 +30,10 @@ for gpu in gpus:
 
 IMAGE_DIR = '/home/mark/src/mmor-crowfall-models/workspace/crowfall/images/test'
 IMAGE_PATHS = [f'{IMAGE_DIR}/{i}' for i in os.listdir(IMAGE_DIR) if '.png' in i]
+IMAGE_PATHS += [
+  '/home/mark/src/mmor-crowfall-models/workspace/crowfall/images/train/donation_2.png',
+  '/home/mark/src/mmor-crowfall-models/workspace/crowfall/images/train/don3.jpg'
+]
 # IMAGE_PATHS = ['/home/mark/src/mmor-crowfall-models/workspace/crowfall/images/test/donation_8.png']
 
 PATH_TO_MODEL_DIR = '/home/mark/src/mmor-crowfall-models/workspace/crowfall/exported-models/crowfall_all_v1'
@@ -66,6 +70,10 @@ print('Done! Took {} seconds'.format(elapsed_time))
 
 category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,
                                                                     use_display_name=True)
+
+for i in category_index:
+  category_index[i]['name'] = category_index[i]['name'][0:3]
+print(category_index)
 
 # %%
 # Putting everything together

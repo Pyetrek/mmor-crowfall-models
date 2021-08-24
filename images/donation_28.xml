@@ -120,7 +120,7 @@
 		</bndbox>
 	</object>
 	<object>
-		<name>soft leather</name>
+		<name>soft hide</name>
 		<pose>Unspecified</pose>
 		<truncated>1</truncated>
 		<difficult>0</difficult>

@@ -76,6 +76,7 @@ rm ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz
 cp models/research/object_detection/model_main_tf2.py workspace/crowfall
 ```
 
+Do the training
 ```
 cd workspace/crowfall
 export PATH=/usr/local/cuda-11.2/bin${PATH:+:${PATH}}

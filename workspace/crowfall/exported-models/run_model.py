@@ -30,13 +30,13 @@ for gpu in gpus:
 
 IMAGE_DIR = '/home/mark/src/mmor-crowfall-models/workspace/crowfall/images/test'
 IMAGE_PATHS = [f'{IMAGE_DIR}/{i}' for i in os.listdir(IMAGE_DIR) if '.png' in i]
-IMAGE_PATHS += [
-  '/home/mark/src/mmor-crowfall-models/workspace/crowfall/images/train/donation_2.png',
-  '/home/mark/src/mmor-crowfall-models/workspace/crowfall/images/train/don3.jpg'
+IMAGE_PATHS = [
+  '/home/mark/src/mmor-crowfall-models/workspace/crowfall/images/test/wood_2.png',
+  '/home/mark/src/mmor-crowfall-models/workspace/crowfall/images/test/minerals_13.png'
 ]
 # IMAGE_PATHS = ['/home/mark/src/mmor-crowfall-models/workspace/crowfall/images/test/donation_8.png']
 
-PATH_TO_MODEL_DIR = '/home/mark/src/mmor-crowfall-models/workspace/crowfall/exported-models/crowfall_all_v1'
+PATH_TO_MODEL_DIR = '/home/mark/src/mmor-crowfall-models/workspace/crowfall/exported-models/crowfall_all_v2.1'
 
 PATH_TO_LABELS = '/home/mark/src/mmor-crowfall-models/workspace/crowfall/annotations/label_map_all.pbtxt'
 

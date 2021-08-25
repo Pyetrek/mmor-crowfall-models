@@ -81,7 +81,7 @@ Do the training
 cd workspace/crowfall
 export PATH=/usr/local/cuda-11.2/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-python model_main_tf2.py --model_dir=models/crowfall_all_ssd_resnet50_v1_fpn --pipeline_config_path=models/crowfall_all_ssd_resnet50_v1_fpn/pipeline.config
+python model_main_tf2.py --model_dir=models/crowfall_all_centernet_v1 --pipeline_config_path=models/crowfall_all_centernet_v1/pipeline.config
 ```
 
 Export model
@@ -89,7 +89,7 @@ Export model
 cp models/research/object_detection/exporter_main_v2.py workspace/crowfall/
 cd workspace/crowfall/
 mkdir -p ./exported-models
-python exporter_main_v2.py --input_type image_tensor --pipeline_config_path ./models/crowfall_all_ssd_resnet50_v1_fpn/pipeline.config --trained_checkpoint_dir ./models/crowfall_all_ssd_resnet50_v1_fpn/ --output_directory ./exported-models/crowfall_all_v1
+python exporter_main_v2.py --input_type image_tensor --pipeline_config_path ./models/crowfall_all_v2.1/pipeline.config --trained_checkpoint_dir ./models/crowfall_all_v2.1/ --output_directory ./exported-models/crowfall_all_v2.1
 ```
 
 Run Inference

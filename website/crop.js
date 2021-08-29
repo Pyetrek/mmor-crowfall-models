@@ -63,6 +63,14 @@ function buildDetectedObjects(raw_scores, threshold, imageWidth, imageHeight, bo
     return detectionObjects
 }
 
+function exportToFile(url, filename){
+    var hiddenElement = document.createElement('a');
+    hiddenElement.href = url;
+    hiddenElement.target = '_blank';
+    hiddenElement.download = filename;
+    hiddenElement.click();
+}
+
 async function run() {
     // load model
     const model = await tf.loadGraphModel('/model/model.json');
@@ -72,16 +80,6 @@ async function run() {
     const model_shape = [640, 640, 3]
     // image.cover(model_shape[0], model_shape[1], Jimp.HORIZONTAL_ALIGN_CENTER | Jimp.VERTICAL_ALIGN_MIDDLE); //This works
     image.resize(model_shape[0], model_shape[1]);
-
-    var c = document.getElementById("canvas");
-    var ctx = c.getContext("2d");
-    const imageData = new ImageData(
-        Uint8ClampedArray.from(image.bitmap.data),
-        image.bitmap.width,
-        image.bitmap.height
-    );
-    ctx.putImageData(imageData, 0, 0);
-
 
     let values = new Float32Array(model_shape[0] * model_shape[1] * model_shape[2]);
 
@@ -106,38 +104,25 @@ async function run() {
     const detectedObjects = dedupe(buildDetectedObjects(raw_scores, 0.3, image.bitmap.width, image.bitmap.height, boxes, classes, {}));
 
 
-    detectedObjects.forEach(obj => obj.draw(ctx) );
+    detectedObjects.forEach((obj, idx) => {
+        const clone = image.clone();
+        clone.crop(obj.bbox.point.x, obj.bbox.point.y, obj.bbox.w, obj.bbox.h);
+        const imageData = new ImageData(
+            Uint8ClampedArray.from(clone.bitmap.data),
+            clone.bitmap.width,
+            clone.bitmap.height
+        );
+        const c = document.createElement('canvas');
+        c.width = obj.bbox.w;
+        c.height = obj.bbox.h
+        const ctx = c.getContext("2d");
+        ctx.putImageData(imageData, 0, 0);
+        c.toBlob(blob => {
+            exportToFile(window.URL.createObjectURL(blob), "cropped_" + idx + ".png");
+        })
+    });
     console.log("Done drawing boxes");
 
-    const worker = Tesseract.createWorker();
-    await worker.load();
-    await worker.loadLanguage('eng');
-    await worker.initialize('eng');
-    const drawn_image = canvas.toDataURL('image/png');
-    ctx.strokeStyle = "red";
-    for (const obj of detectedObjects) {
-        const rectangle = {
-            left: obj.bbox.point.x,
-            top: obj.bbox.point.y,
-            width: obj.bbox.w,
-            height: obj.bbox.h,
-        };
-        const result = await worker.recognize(drawn_image, obj);
-        console.log(obj.label);
-        // console.log(rectangle);
-        // console.log(obj);
-        // console.log(result.data.words);
-        result.data.words.forEach(w => {
-            const left = w.bbox.x0;
-            const top = w.bbox.y0;
-            const width = w.bbox.x1 - w.bbox.x0;
-            const height = w.bbox.y1 - w.bbox.y0;
-            // console.log({top: top, left: left, width: width, height: height});
-            console.log(w.text);
-            ctx.strokeRect(left, top, width, height);
-        });
-    }
-    await worker.terminate();
   }
   
   run();

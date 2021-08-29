@@ -33,6 +33,12 @@ class Rectangle {
         new Line([new Point(x + w, y + h), new Point(x, y + h)]),
         new Line([new Point(x, y + h), new Point(x, y)]),
       ];
+
+      //So we can pass this object directory into tesseract
+      this.left = x;
+      this.top = y;
+      this.width = w;
+      this.height = h;
     }
 
     overlaps(rect) {

@@ -3,11 +3,12 @@
   <head>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
     <script src="https://unpkg.com/jimp@0.14.0/browser/lib/jimp.js"></script>
+    <script src='https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js'></script>
   </head>
   <body>
     <h4>Tiny TFJS example<hr/></h4>
-    <div id="micro-out-div">Training...</div>
-    <script type="module" src="./index.js"> </script>
+    <script type="module" src="./crop.js"> </script>
+    <input type="file" id="uploader"><br/>
     <canvas id="canvas" width="640px" height="640px"></canvas>
   </body>
 </html>

@@ -6,7 +6,8 @@
     "test": "mocha --require esm"
   },
   "dependencies": {
-    "esm": "^3.2.25"
+    "esm": "^3.2.25",
+    "tesseract.js": "^2.1.5"
   },
   "type": "module"
 }

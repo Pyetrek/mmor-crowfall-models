@@ -4,6 +4,9 @@ class Detection {
         this.label = label;
         this.score = score;
         this.bbox = bbox;
+
+        //So we can pass this directory into Tesseract
+        this.rectangle = bbox;
     }
     draw(ctx) {
         this.bbox.draw(ctx, this.label);

@@ -81,7 +81,7 @@ Do the training
 cd workspace/crowfall
 export PATH=/usr/local/cuda-11.2/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-python model_main_tf2.py --model_dir=models/crowfall_all_centernet_v1 --pipeline_config_path=models/crowfall_all_centernet_v1/pipeline.config
+python model_main_tf2.py --model_dir=models/crowfall_all_v2.1 --pipeline_config_path=models/crowfall_all_v2.1/pipeline.config
 ```
 
 Export model

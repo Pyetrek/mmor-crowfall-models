@@ -1,0 +1,160 @@
+[{
+    "id": 1,
+    "name": "iron ore"
+},
+{
+    "id": 2,
+    "name": "copper ore"
+},
+{
+    "id": 3,
+    "name": "aurelium ore"
+},
+{
+    "id": 4,
+    "name": "tin ore"
+},
+{
+    "id": 5,
+    "name": "silver ore"
+},
+{
+    "id": 6,
+    "name": "diamond gem"
+},
+{
+    "id": 7,
+    "name": "sapphire gem"
+},
+{
+    "id": 8,
+    "name": "emerald gem"
+},
+{
+    "id": 9,
+    "name": "ruby gem"
+},
+{
+    "id": 10,
+    "name": "topaz gem"
+},
+{
+    "id": 11,
+    "name": "oak log"
+},
+{
+    "id": 12,
+    "name": "spruce log"
+},
+{
+    "id": 13,
+    "name": "birch log"
+},
+{
+    "id": 14,
+    "name": "ash log"
+},
+{
+    "id": 15,
+    "name": "yew log"
+},
+{
+    "id": 16,
+    "name": "oak heartwood"
+},
+{
+    "id": 17,
+    "name": "spruce heartwood"
+},
+{
+    "id": 18,
+    "name": "birch heartwood"
+},
+{
+    "id": 19,
+    "name": "ash heartwood"
+},
+{
+    "id": 20,
+    "name": "yew heartwood"
+},
+{
+    "id": 21,
+    "name": "granite stone"
+},
+{
+    "id": 22,
+    "name": "limestone stone"
+},
+{
+    "id": 23,
+    "name": "travertine stone"
+},
+{
+    "id": 24,
+    "name": "slate stone"
+},
+{
+    "id": 25,
+    "name": "marble stone"
+},
+{
+    "id": 26,
+    "name": "cinnabar mineral"
+},
+{
+    "id": 27,
+    "name": "dolomite mineral"
+},
+{
+    "id": 28,
+    "name": "halite mineral"
+},
+{
+    "id": 29,
+    "name": "nitre mineral"
+},
+{
+    "id": 30,
+    "name": "sulphur mineral"
+},
+{
+    "id": 31,
+    "name": "flexible hide"
+},
+{
+    "id": 32,
+    "name": "strong hide"
+},
+{
+    "id": 33,
+    "name": "tough hide"
+},
+{
+    "id": 34,
+    "name": "soft hide"
+},
+{
+    "id": 35,
+    "name": "durable hide"
+},
+{
+    "id": 36,
+    "name": "blood"
+},
+{
+    "id": 37,
+    "name": "bone"
+},
+{
+    "id": 38,
+    "name": "ethereal dust"
+},
+{
+    "id": 39,
+    "name": "chaos ember"
+},
+{
+    "id": 40,
+    "name": "gold"
+}]

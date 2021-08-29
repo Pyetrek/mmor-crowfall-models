@@ -4,3 +4,4 @@
 **/models/**/events.out.tfevents.*
 **/exported-models/*/
 **/pre-trained-models/
+node_modules

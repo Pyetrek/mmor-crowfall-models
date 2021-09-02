@@ -56,10 +56,10 @@ python object_detection/builders/model_builder_tf2_test.py
 
 ```
 cd scripts/preprocessing/
-export IMAGES_PATH=/home/mark/src/mmor-crowfall-models/workspace/crowfall/images
-export ANNOTATIONS_PATH=/home/mark/src/mmor-crowfall-models/workspace/crowfall/annotations
-python generate_tfrecord.py -x ${IMAGES_PATH}/train -l ${ANNOTATIONS_PATH}/label_map_all.pbtxt -o ${ANNOTATIONS_PATH}/train.record
-python generate_tfrecord.py -x ${IMAGES_PATH}/test -l ${ANNOTATIONS_PATH}/label_map_all.pbtxt -o ${ANNOTATIONS_PATH}/test.record
+export IMAGES_PATH=/home/mark/src/mmor-crowfall-models/workspace/numbers/images
+export ANNOTATIONS_PATH=/home/mark/src/mmor-crowfall-models/workspace/numbers/annotations
+python generate_tfrecord.py -x ${IMAGES_PATH}/train -l ${ANNOTATIONS_PATH}/label_map.pbtxt -o ${ANNOTATIONS_PATH}/train.record
+python generate_tfrecord.py -x ${IMAGES_PATH}/test -l ${ANNOTATIONS_PATH}/label_map.pbtxt -o ${ANNOTATIONS_PATH}/test.record
 ```
 Note: Double check that these files generate because training will do nothing (sit there and spin) if the training.record file is empty.
 
@@ -73,7 +73,7 @@ rm ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz
 ```
 
 ```
-cp models/research/object_detection/model_main_tf2.py workspace/crowfall
+cp models/research/object_detection/model_main_tf2.py workspace/numbers
 ```
 
 Do the training
@@ -81,7 +81,7 @@ Do the training
 cd workspace/crowfall
 export PATH=/usr/local/cuda-11.2/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-python model_main_tf2.py --model_dir=models/crowfall_all_v2.1 --pipeline_config_path=models/crowfall_all_v2.1/pipeline.config
+python model_main_tf2.py --model_dir=models/ssd_mobilenet_v2_fpnlite_320x320 --pipeline_config_path=models/ssd_mobilenet_v2_fpnlite_320x320/pipeline.config
 ```
 
 Export model
@@ -89,7 +89,7 @@ Export model
 cp models/research/object_detection/exporter_main_v2.py workspace/crowfall/
 cd workspace/crowfall/
 mkdir -p ./exported-models
-python exporter_main_v2.py --input_type image_tensor --pipeline_config_path ./models/crowfall_all_v2.1/pipeline.config --trained_checkpoint_dir ./models/crowfall_all_v2.1/ --output_directory ./exported-models/crowfall_all_v2.1
+python exporter_main_v2.py --input_type image_tensor --pipeline_config_path ./models/ssd_mobilenet_v2_fpnlite_320x320/pipeline.config --trained_checkpoint_dir ./models/ssd_mobilenet_v2_fpnlite_320x320/ --output_directory ./exported-models/ssd_mobilenet_v2_fpnlite_320x320_v1
 ```
 
 Run Inference

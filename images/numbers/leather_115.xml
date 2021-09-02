@@ -1,0 +1,26 @@
+<annotation>
+	<folder>numbers</folder>
+	<filename>leather_115.png</filename>
+	<path>/home/mark/src/mmor-crowfall-models/images/numbers/leather_115.png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>51</width>
+		<height>87</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>2</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>39</xmin>
+			<ymin>55</ymin>
+			<xmax>49</xmax>
+			<ymax>79</ymax>
+		</bndbox>
+	</object>
+</annotation>

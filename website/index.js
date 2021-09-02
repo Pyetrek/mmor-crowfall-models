@@ -108,36 +108,6 @@ async function run() {
 
     detectedObjects.forEach(obj => obj.draw(ctx) );
     console.log("Done drawing boxes");
-
-    const worker = Tesseract.createWorker();
-    await worker.load();
-    await worker.loadLanguage('eng');
-    await worker.initialize('eng');
-    const drawn_image = canvas.toDataURL('image/png');
-    ctx.strokeStyle = "red";
-    for (const obj of detectedObjects) {
-        const rectangle = {
-            left: obj.bbox.point.x,
-            top: obj.bbox.point.y,
-            width: obj.bbox.w,
-            height: obj.bbox.h,
-        };
-        const result = await worker.recognize(drawn_image, obj);
-        console.log(obj.label);
-        // console.log(rectangle);
-        // console.log(obj);
-        // console.log(result.data.words);
-        result.data.words.forEach(w => {
-            const left = w.bbox.x0;
-            const top = w.bbox.y0;
-            const width = w.bbox.x1 - w.bbox.x0;
-            const height = w.bbox.y1 - w.bbox.y0;
-            // console.log({top: top, left: left, width: width, height: height});
-            console.log(w.text);
-            ctx.strokeRect(left, top, width, height);
-        });
-    }
-    await worker.terminate();
   }
   
   run();

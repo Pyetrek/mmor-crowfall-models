@@ -71,11 +71,8 @@ function exportToFile(url, filename){
     hiddenElement.click();
 }
 
-async function run() {
+async function run(model, image_path, prefix) {
     // load model
-    const model = await tf.loadGraphModel('/model/model.json');
-
-    const image_path = '/test_images/ore_2.png'
     const image = await Jimp.read(image_path);
     const model_shape = [640, 640, 3]
     // image.cover(model_shape[0], model_shape[1], Jimp.HORIZONTAL_ALIGN_CENTER | Jimp.VERTICAL_ALIGN_MIDDLE); //This works
@@ -104,25 +101,60 @@ async function run() {
     const detectedObjects = dedupe(buildDetectedObjects(raw_scores, 0.3, image.bitmap.width, image.bitmap.height, boxes, classes, {}));
 
 
-    detectedObjects.forEach((obj, idx) => {
-        const clone = image.clone();
-        clone.crop(obj.bbox.point.x, obj.bbox.point.y, obj.bbox.w, obj.bbox.h);
-        const imageData = new ImageData(
-            Uint8ClampedArray.from(clone.bitmap.data),
-            clone.bitmap.width,
-            clone.bitmap.height
-        );
-        const c = document.createElement('canvas');
-        c.width = obj.bbox.w;
-        c.height = obj.bbox.h
-        const ctx = c.getContext("2d");
-        ctx.putImageData(imageData, 0, 0);
-        c.toBlob(blob => {
-            exportToFile(window.URL.createObjectURL(blob), "cropped_" + idx + ".png");
-        })
-    });
-    console.log("Done drawing boxes");
+    var c = document.getElementById("canvas");
+    var ctx = c.getContext("2d");
+    const imageData = new ImageData(
+        Uint8ClampedArray.from(image.bitmap.data),
+        image.bitmap.width,
+        image.bitmap.height
+    );
+    ctx.putImageData(imageData, 0, 0);
+    detectedObjects.forEach(obj => obj.draw(ctx) );
 
-  }
+    // detectedObjects.forEach((obj, idx) => {
+    //     const clone = image.clone();
+    //     clone.crop(obj.bbox.point.x, obj.bbox.point.y, obj.bbox.w, obj.bbox.h);
+    //     const imageData = new ImageData(
+    //         Uint8ClampedArray.from(clone.bitmap.data),
+    //         clone.bitmap.width,
+    //         clone.bitmap.height
+    //     );
+    //     const c = document.createElement('canvas');
+    //     c.width = obj.bbox.w;
+    //     c.height = obj.bbox.h
+    //     const ctx = c.getContext("2d");
+    //     ctx.putImageData(imageData, 0, 0);
+    //     c.toBlob(blob => {
+    //         exportToFile(window.URL.createObjectURL(blob), prefix + idx + ".png");
+    //     })
+    // });
+    console.log("Done drawing boxes");
+}
   
-  run();
+
+async function main() {
+    const image_paths = [
+        // ["/numbers/donation_2.png", "donation_2"],
+        // ["/numbers/donation_4.png", "donation_4"],
+        // ["/numbers/dust_1.png", "dust_1"],
+        // ["/numbers/dust_2.png", "dust_2"],
+        // ["/numbers/dust_4.png", "dust_4"],
+        // ["/numbers/gems_1.png", "gems_1"],
+        // ["/numbers/gold_15.png", "gold_15"],
+        // ["/numbers/gold_16.jpg", "gold_16"],
+        // ["/numbers/gold_17.png", "gold_17"],
+        // ["/numbers/gold_18.png", "gold_18"],
+        ["/numbers/gold_5.png", "gold_5"],
+        // ["/numbers/gold_6.png", "gold_6"],
+        // ["/numbers/leather_1.png", "leather_1"],
+        // ["/numbers/minerals_3.png", "minerals_3"],
+        // ["/numbers/ore_5.png", "ore_5"],
+        // ["/numbers/wood_16.png", "wood_16"]
+    ];
+    const model = await tf.loadGraphModel('/model/model.json');
+
+    for (const images of image_paths) {
+        await run(model, images[0], images[1]);
+    }
+}
+main();

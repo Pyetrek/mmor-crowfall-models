@@ -1,0 +1,26 @@
+<annotation>
+	<folder>numbers</folder>
+	<filename>gems_13.png</filename>
+	<path>/home/mark/src/mmor-crowfall-models/images/numbers/gems_13.png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>52</width>
+		<height>146</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>7</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>37</xmin>
+			<ymin>96</ymin>
+			<xmax>52</xmax>
+			<ymax>132</ymax>
+		</bndbox>
+	</object>
+</annotation>

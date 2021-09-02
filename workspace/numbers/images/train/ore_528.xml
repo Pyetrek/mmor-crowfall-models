@@ -1,0 +1,26 @@
+<annotation>
+	<folder>numbers</folder>
+	<filename>ore_528.png</filename>
+	<path>/home/mark/src/mmor-crowfall-models/images/numbers/ore_528.png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>48</width>
+		<height>105</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>5</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>35</xmin>
+			<ymin>67</ymin>
+			<xmax>46</xmax>
+			<ymax>96</ymax>
+		</bndbox>
+	</object>
+</annotation>

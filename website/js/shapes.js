@@ -23,22 +23,20 @@ class Line {
 
 class Rectangle {
     constructor(x, y, w, h) {
-      this.w = w;
-      this.h = h;
-      this.area = w * h;
-      this.point = new Point(x, y);
-      this.lines = [
-        new Line([new Point(x, y), new Point(x + w, y)]),
-        new Line([new Point(x + w, y), new Point(x + w, y + h)]),
-        new Line([new Point(x + w, y + h), new Point(x, y + h)]),
-        new Line([new Point(x, y + h), new Point(x, y)]),
-      ];
+        this._init(x, y, w, h);
+    }
 
-      //So we can pass this object directory into tesseract
-      this.left = x;
-      this.top = y;
-      this.width = w;
-      this.height = h;
+    _init(x, y, w, h) {
+        this.w = w;
+        this.h = h;
+        this.area = w * h;
+        this.point = new Point(x, y);
+        this.lines = [
+          new Line([new Point(x, y), new Point(x + w, y)]),
+          new Line([new Point(x + w, y), new Point(x + w, y + h)]),
+          new Line([new Point(x + w, y + h), new Point(x, y + h)]),
+          new Line([new Point(x, y + h), new Point(x, y)]),
+        ];
     }
 
     overlaps(rect) {
@@ -52,14 +50,18 @@ class Rectangle {
             (this.point.x + this.w) >= point.x && 
             (this.point.y + this.h) >= point.y;
     }
-    draw(ctx, label) {
+    draw(ctx, label=null, offsetX=0, offsetY=0) {
         ctx.strokeStyle = "white";
         ctx.fillStyle = "white";
         const point = this.point;
-        ctx.strokeRect(point.x, point.y, this.w, this.h);
-        if (label) {
-            ctx.fillText(label, point.x, point.y);
+        ctx.strokeRect(point.x + offsetX, point.y + offsetY, this.w, this.h);
+        if (label != null) {
+            ctx.fillText(label, point.x + offsetX, point.y + offsetY);
         }
+    }
+
+    scale(xMult, yMult) {
+        this._init(this.point.x * xMult, this.point.y * yMult, this.w * xMult, this.h * yMult);
     }
 }
 

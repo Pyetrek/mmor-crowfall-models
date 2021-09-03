@@ -16,11 +16,8 @@ class TfModel {
     }
     scaleImage(image) {
         image.resize(this.model_shape[0], this.model_shape[1]);
-        // image.cover(this.model_shape[0], this.model_shape[1], Jimp.HORIZONTAL_ALIGN_CENTER | Jimp.VERTICAL_ALIGN_MIDDLE);
-        // image.scaleToFit(this.model_shape[0], this.model_shape[0]);
     }
     drawImage(ctx, image) {
-        this.scaleImage(image);        
         const imageData = new ImageData(
             Uint8ClampedArray.from(image.bitmap.data),
             image.bitmap.width,
@@ -29,7 +26,6 @@ class TfModel {
         ctx.putImageData(imageData, 0, 0);
     }
     async infer(image, threshold=0.3) {
-        this.scaleImage(image);
         let values = new Float32Array(this.model_shape[0] * this.model_shape[1] * this.model_shape[2]);
 
         let i = 0;
@@ -87,8 +83,9 @@ async function resourceModel() {
     await model.load();
 
     model.scaleImage = (image) => {
-        console.log("Image W: " + image.bitmap.width + ", H: " + image.bitmap.height);
-        image.resize(model.model_shape[0], 400);
+        const newWidth = Math.min(model.model_shape[0], 5 * image.bitmap.width);
+        const newHeight = Math.min(model.model_shape[1], 5 * image.bitmap.height);
+        image.resize(newWidth, newHeight);
     };
     return model;
 }

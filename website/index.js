@@ -26,7 +26,9 @@ async function run_model(model, number_model, image_path) {
 
     var c = document.getElementById("canvas");
     var ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, c.width, c.height);
     
+    model.scaleImage(image);
     model.drawImage(ctx, image);
 
     const detectedObjects = await model.infer(image);
@@ -35,6 +37,7 @@ async function run_model(model, number_model, image_path) {
         obj.draw(ctx);
         const clone = image.clone();
         clone.crop(obj.bbox.point.x, obj.bbox.point.y, obj.bbox.w, obj.bbox.h);
+        number_model.scaleImage(clone);
         const numbers = await number_model.infer(clone);
         for (const number of numbers) {
             number.bbox.scale(obj.bbox.w/clone.bitmap.width, obj.bbox.h/clone.bitmap.height);
